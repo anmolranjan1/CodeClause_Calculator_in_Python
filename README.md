@@ -36,7 +36,7 @@ The project showcases how to create a simple calculator using object-oriented pr
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/your-username/calculator.git
+   git clone https://github.com/anmolranjan1/calculator.git
    ```
 
 2. Navigate to the project directory:
