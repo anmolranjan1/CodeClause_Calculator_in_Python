@@ -1,4 +1,4 @@
-# PyCalculator
+# Calculator
 
 A simple calculator built using Python and Tkinter, providing basic arithmetic operations and square root functionality.
 
