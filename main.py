@@ -51,6 +51,17 @@ class Calculator:
         for key in self.operations:
             self.window.bind(key, lambda event, operator=key: self.append_operator(operator))
 
+        # Bind '=' key to evaluate expression
+        self.window.bind("=", lambda event: self.evaluate())
+
+        # Bind backspace key to delete the last character
+        self.window.bind("<BackSpace>", lambda event: self.delete_last_character())
+
+    def delete_last_character(self):
+        if self.current_expression:
+            self.current_expression = self.current_expression[:-1]
+            self.update_label()
+
     def create_special_buttons(self):
         # Create buttons for equals, square, and square root
         self.create_equals_button()
@@ -111,6 +122,7 @@ class Calculator:
         self.total_expression = ""
         self.update_label()
         self.update_total_label()
+        self.label.config(font=LARGE_FONT_STYLE)
 
     def create_clear_entry_button(self):
         # Create "CE" button to clear the current expression
@@ -179,7 +191,11 @@ class Calculator:
 
     def update_label(self):
         # Limit the length of the current expression to fit the label
-        self.label.config(text=self.current_expression[:15])
+        # self.label.config(text=self.current_expression[:15])
+        self.label.config(text=self.current_expression)
+        if len(self.current_expression) > 15:
+            self.label.config(font=("Arial", int(30 - len(self.current_expression) / 2)))
+            self.label.config(text=self.current_expression)
 
     def run(self):
         # Start the GUI event loop
